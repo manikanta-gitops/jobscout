@@ -2,7 +2,9 @@ name: scrape
 
 on:
   schedule:
-    - cron: "7 * * * *" # hourly; GitHub may delay scheduled runs a few minutes
+    # 9:00 AM and 10:00 AM IST daily (GitHub cron is UTC; IST = UTC+5:30).
+    - cron: "30 3 * * *"
+    - cron: "0 4 * * *"
   workflow_dispatch:
 
 # Serialize runs so two jobs never write the state at the same time.
