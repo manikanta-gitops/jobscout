@@ -98,5 +98,5 @@ queries = ["devops engineer", "site reliability engineer", "platform engineer", 
 # they publish on LinkedIn. No key needed. Add more channel usernames as you find good ones.
 [sources.tgchannels]
 enabled = true
-interval_minutes = 120
+interval_minutes = 3   # near-real-time: check new recruiter posts every 3 minutes
 channels = ["DevOpsBuddys", "itreferral_jobs", "jobscoupe", "jobsinternshipswale"]
