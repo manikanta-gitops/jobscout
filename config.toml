@@ -95,8 +95,9 @@ location = "India"
 queries = ["devops engineer", "site reliability engineer", "platform engineer", "cloud engineer"]
 
 # Public Telegram channels where recruiters cross-post the same 'we are hiring' feed posts
-# they publish on LinkedIn. No key needed. Add more channel usernames as you find good ones.
+# they publish on LinkedIn. Disabled here (cloud/hourly runs) because polling is done
+# near-real-time by the local machine via config-channels.toml.
 [sources.tgchannels]
-enabled = true
+enabled = false
 interval_minutes = 3   # near-real-time: check new recruiter posts every 3 minutes
 channels = ["DevOpsBuddys", "itreferral_jobs", "jobscoupe", "jobsinternshipswale"]

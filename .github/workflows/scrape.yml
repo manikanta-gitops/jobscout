@@ -2,9 +2,8 @@ name: scrape
 
 on:
   schedule:
-    # 9:00 AM and 10:00 AM IST daily (GitHub cron is UTC; IST = UTC+5:30).
-    - cron: "30 3 * * *"
-    - cron: "0 4 * * *"
+    # Every hour in IST timezone terms (GitHub cron is UTC; IST = UTC+5:30 — hourly offset stays the same).
+    - cron: "7 * * * *"
   workflow_dispatch:
 
 # Serialize runs so two jobs never write the state at the same time.

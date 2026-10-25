@@ -3,3 +3,4 @@
 __pycache__/
 state/
 *.pyc
+config-channels.toml
