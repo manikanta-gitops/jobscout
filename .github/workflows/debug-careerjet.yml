@@ -1,0 +1,15 @@
+name: debug-careerjet
+on:
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          K=3a2af9adbb2ecac917643cb1cfbcdbcd
+          echo "--- public.api.careerjet.net"
+          curl -4 -s -m 20 -w "\nHTTP %{http_code}\n" "https://public.api.careerjet.net/search?keywords=devops&location=India&affid=$K&locale_code=en_IN" | head -c 500 || true
+          echo "--- api.careerjet.com"
+          curl -4 -s -m 20 -o /dev/null -w "HTTP %{http_code}\n" "https://api.careerjet.com/search?keywords=devops&location=India&api_key=$K&locale_code=en_IN" || true
+          echo "--- POST variant"
+          curl -4 -s -m 20 -w "\nHTTP %{http_code}\n" -X POST "https://public.api.careerjet.net/search" -d "keywords=devops" -d "location=India" -d "affid=$K" -d "locale_code=en_IN" | head -c 500 || true
