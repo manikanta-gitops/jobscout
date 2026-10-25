@@ -7,7 +7,8 @@ first_run_limit = 10   # on an empty state, send only the newest N and mark the 
 include = [
   "devops", "devsecops", "sre", "site reliability", "platform engineer", "cloud engineer",
   "infrastructure engineer", "devops engineer", "cloud devops", "aws engineer",
-  "kubernetes", "terraform", "gitops", "release engineer", "build and release", "sysadmin",
+  "kubernetes", "k8s", "terraform", "gitops", "release engineer", "build and release",
+  "sysadmin", "deployment engineer", "cloud operations", "devops support",
 ]
 # avoid titles above the 2-4 yr band (senior/staff/lead/manager) and non-technical roles
 exclude_title = [
@@ -18,7 +19,8 @@ exclude_title = [
 # Jobs with no location always pass. Empty list = accept every location.
 locations = [
   "india", "bangalore", "bengaluru", "hyderabad", "chennai", "pune", "mumbai", "delhi",
-  "gurgaon", "gurugram", "noida", "worldwide", "anywhere", "global", "apac", "asia", "remote",
+  "gurgaon", "gurugram", "noida", "kolkata", "ahmedabad", "indore",
+  "worldwide", "anywhere", "global", "apac", "asia", "remote",
 ]
 max_age_days = 2  # only fresh postings: today, yesterday, or the day before
 
@@ -88,6 +90,6 @@ companies = ["swiggy", "wise", "canva"]
 # Jooble aggregates India job boards (free API key, 500 requests/month default).
 [sources.jooble]             # needs JOOBLE_API_KEY
 enabled = true
-interval_minutes = 240
+interval_minutes = 360       # 4 queries x 4 polls/day = ~480 requests/month, under the 500 limit
 location = "India"
 queries = ["devops engineer", "site reliability engineer", "platform engineer", "cloud engineer"]
