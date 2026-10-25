@@ -77,3 +77,10 @@ companies = ["palantir", "spotify"]
 enabled = true
 interval_minutes = 60
 companies = ["linear", "ramp", "notion"]
+
+# SmartRecruiters hosts many consumer-tech companies (Swiggy India, Wise, Canva).
+# Add slugs you care about; unknown slugs are skipped with a warning.
+[sources.smartrecruiters]
+enabled = true
+interval_minutes = 60
+companies = ["swiggy", "wise", "canva"]

@@ -253,6 +253,25 @@ def ashby(cfg: dict, s: requests.Session) -> Iterator[Job]:
     return _per_company(cfg, s, fetch)
 
 
+def smartrecruiters(cfg: dict, s: requests.Session) -> Iterator[Job]:
+    def fetch(slug: str) -> Iterator[Job]:
+        for j in _get(s, f"https://api.smartrecruiters.com/v1/companies/{slug}/postings", limit=100).json().get("content", []):
+            level = (j.get("experienceLevel") or {}).get("label", "")
+            job_type = (j.get("typeOfEmployment") or {}).get("label", "")
+            yield Job(
+                source="smartrecruiters",
+                id=f"{slug}-{j['id']}",
+                title=_text(j["name"]),
+                company=(j.get("company") or {}).get("name", slug),
+                url=f"https://jobs.smartrecruiters.com/{slug}/{j['id']}",
+                location=(j.get("location") or {}).get("fullLocation", ""),
+                tags=[t for t in (level, job_type, (j.get("department") or {}).get("label", "")) if t],
+                posted_at=_dt(j.get("releasedDate")),
+            )
+
+    return _per_company(cfg, s, fetch)
+
+
 SOURCES: dict[str, Fetcher] = {
     "remoteok": remoteok,
     "weworkremotely": weworkremotely,
@@ -264,4 +283,5 @@ SOURCES: dict[str, Fetcher] = {
     "greenhouse": greenhouse,
     "lever": lever,
     "ashby": ashby,
+    "smartrecruiters": smartrecruiters,
 }
