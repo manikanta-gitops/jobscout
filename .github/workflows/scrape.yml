@@ -29,12 +29,14 @@ jobs:
       - run: pip install -r requirements.txt
 
       # State (already-sent jobs) lives on an orphan `state` branch, so it never expires like a cache would.
+      # Both files are restored so the hourly run never loses the 5-min channels watcher's state.
       - name: Restore state
         run: |
           mkdir -p state
           if [ -n "$(git ls-remote --heads origin state)" ]; then
             git fetch --depth=1 origin state
-            git show FETCH_HEAD:state/state.json > state/state.json
+            git show FETCH_HEAD:state/state.json > state/state.json || true
+            git show FETCH_HEAD:state/state-channels.json > state/state-channels.json || true
           fi
 
       - run: python -m jobscout
@@ -48,11 +50,11 @@ jobs:
       - name: Save state
         if: always()
         run: |
-          [ -f state/state.json ] || exit 0
+          ls state/*.json >/dev/null 2>&1 || exit 0
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
           git checkout --orphan state-new
           git rm -rf --cached . -q
-          git add -f state/state.json
+          git add -f state/
           git commit -qm "state"
           git push -f origin state-new:state

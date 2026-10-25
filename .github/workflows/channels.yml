@@ -1,0 +1,55 @@
+name: channels
+on:
+  schedule:
+    # Every 5 minutes, so recruiter "we are hiring" posts reach Telegram almost in real time.
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: channels
+  cancel-in-progress: false
+
+permissions:
+  contents: write # only used to push the `state` branch
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # Channels keeps its own state file, and mirrors the boards state so the
+      # hourly scrape run's state is never wiped by this faster workflow.
+      - name: Restore state
+        run: |
+          mkdir -p state
+          if [ -n "$(git ls-remote --heads origin state)" ]; then
+            git fetch --depth=1 origin state
+            git show FETCH_HEAD:state/state-channels.json > state/state-channels.json || true
+            git show FETCH_HEAD:state/state.json > state/state.json || true
+          fi
+
+      - run: python -m jobscout --config config-channels.toml
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Save state
+        if: always()
+        run: |
+          ls state/*.json >/dev/null 2>&1 || exit 0
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git checkout --orphan state-new
+          git rm -rf --cached . -q
+          git add -f state/
+          git commit -qm "state-channels"
+          git push -f origin state-new:state

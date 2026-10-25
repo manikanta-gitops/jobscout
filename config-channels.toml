@@ -1,0 +1,29 @@
+# Cloud config for the 5-minute channel watcher (workflows/channels.yml).
+# Powered by the public repo's unlimited Actions minutes. The boards workflow (scrape.yml)
+# runs hourly from config.toml; the two share the repo but keep separate state files.
+
+[filters]
+include = [
+  "devops", "devsecops", "sre", "site reliability", "platform engineer", "cloud engineer",
+  "infrastructure engineer", "devops engineer", "cloud devops", "aws engineer",
+  "kubernetes", "k8s", "terraform", "gitops", "release engineer", "build and release",
+  "sysadmin", "deployment engineer", "cloud operations", "devops support",
+]
+exclude_title = [
+  "senior", "sr", "snr", "lead", "principal", "staff", "manager", "head", "director",
+  "architect", "intern", "internship", "trainee", "associate", "sales", "recruiter", "marketing",
+]
+locations = [
+  "india", "bangalore", "bengaluru", "hyderabad", "chennai", "pune", "mumbai", "delhi",
+  "gurgaon", "gurugram", "noida", "kolkata", "ahmedabad", "indore",
+  "worldwide", "anywhere", "global", "apac", "asia", "remote",
+]
+max_age_days = 2
+
+[sources.tgchannels]
+enabled = true
+interval_minutes = 3
+channels = ["DevOpsBuddys", "itreferral_jobs", "jobscoupe", "jobsinternshipswale"]
+
+max_per_run = 30
+first_run_limit = 10
