@@ -93,3 +93,10 @@ enabled = true
 interval_minutes = 360       # 4 queries x 4 polls/day = ~480 requests/month, under the 500 limit
 location = "India"
 queries = ["devops engineer", "site reliability engineer", "platform engineer", "cloud engineer"]
+
+# Public Telegram channels where recruiters cross-post the same 'we are hiring' feed posts
+# they publish on LinkedIn. No key needed. Add more channel usernames as you find good ones.
+[sources.tgchannels]
+enabled = true
+interval_minutes = 120
+channels = ["DevOpsBuddys", "itreferral_jobs", "jobscoupe", "jobsinternshipswale"]

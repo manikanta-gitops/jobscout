@@ -298,6 +298,38 @@ def jooble(cfg: dict, s: requests.Session) -> Iterator[Job]:
             )
 
 
+_ROLE = re.compile(
+    r"\b(devops|devsecops|sre|site reliability|kubernetes|k8s|cloud engineer|platform engineer"
+    r"|infrastructure engineer|release engineer|sysadmin|terraform|deployment engineer)\b", re.IGNORECASE)
+
+
+def tgchannels(cfg: dict, s: requests.Session) -> Iterator[Job]:
+    """Recruiter 'we are hiring' posts cross-posted to public Telegram channels (no login needed)."""
+    for channel in cfg.get("channels", ["DevOpsBuddys"]):
+        try:
+            r = _get(s, f"https://t.me/s/{channel}")
+        except requests.RequestException as e:
+            log.warning("channel '%s' skipped (%s)", channel, type(e).__name__)
+            continue
+        for post, dt, body in re.findall(
+                r'data-post="([^"]+)".*?datetime="([^"]+)".*?class="tgme_widget_message_text[^"]*"[^>]*>(.*?)</div>',
+                r.text, re.S):
+            lines = [ln.strip(" 🚀⚠️📢📌-") for ln in _text(body).split(">") if ln.strip()]
+            lines = [ln for ln in re.split(r"[•\n\r]", re.sub(r"\s+", " ", _text(body))) if ln.strip()]
+            candidates = [ln for ln in lines if _ROLE.search(ln)]
+            title = (candidates[0] if candidates else (lines[0] if lines else ""))[:90]
+            yield Job(
+                source="tgchannels",
+                id=post,
+                title=title,
+                company=channel,
+                url=f"https://t.me/{post}",
+                location="",
+                tags=[channel],
+                posted_at=_dt(dt),
+            )
+
+
 SOURCES: dict[str, Fetcher] = {
     "remoteok": remoteok,
     "weworkremotely": weworkremotely,
@@ -311,4 +343,5 @@ SOURCES: dict[str, Fetcher] = {
     "ashby": ashby,
     "smartrecruiters": smartrecruiters,
     "jooble": jooble,
+    "tgchannels": tgchannels,
 }
