@@ -84,3 +84,10 @@ companies = ["linear", "ramp", "notion"]
 enabled = true
 interval_minutes = 60
 companies = ["swiggy", "wise", "canva"]
+
+# Jooble aggregates India job boards (free API key, 500 requests/month default).
+[sources.jooble]             # needs JOOBLE_API_KEY
+enabled = true
+interval_minutes = 240
+location = "India"
+queries = ["devops engineer", "site reliability engineer", "platform engineer", "cloud engineer"]

@@ -272,6 +272,32 @@ def smartrecruiters(cfg: dict, s: requests.Session) -> Iterator[Job]:
     return _per_company(cfg, s, fetch)
 
 
+def jooble(cfg: dict, s: requests.Session) -> Iterator[Job]:
+    key = os.getenv("JOOBLE_API_KEY", "")
+    if not key:
+        log.warning("jooble: JOOBLE_API_KEY not set; skipping")
+        return
+    for q in cfg.get("queries", ["devops engineer"]):
+        data = s.post(
+            f"https://jooble.org/api/{key}",
+            json={"keywords": q, "location": cfg.get("location", "India"), "page": 1},
+            headers={"Content-Type": "application/json"},
+            timeout=25,
+        ).json()
+        for j in data.get("jobs", []):
+            yield Job(
+                source="jooble",
+                id=str(j.get("id", "")),
+                title=_text(j.get("title", "")),
+                company=j.get("company", ""),
+                url=j.get("link", ""),
+                location=j.get("location", ""),
+                salary=j.get("salary", ""),
+                tags=[q],
+                posted_at=_dt(j.get("updated")),
+            )
+
+
 SOURCES: dict[str, Fetcher] = {
     "remoteok": remoteok,
     "weworkremotely": weworkremotely,
@@ -284,4 +310,5 @@ SOURCES: dict[str, Fetcher] = {
     "lever": lever,
     "ashby": ashby,
     "smartrecruiters": smartrecruiters,
+    "jooble": jooble,
 }
