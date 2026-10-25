@@ -1,0 +1,79 @@
+# Jobs must match at least one `include` keyword in title/tags and none of `exclude_title`.
+# Tuned for a 2-4 yr DevOps engineer (AWS, Terraform, K8s/EKS, Helm, ArgoCD, GitHub Actions, Datadog).
+max_per_run = 30       # cap on Telegram messages per run; the rest are sent next run
+first_run_limit = 10   # on an empty state, send only the newest N and mark the rest as seen
+
+[filters]
+include = [
+  "devops", "devsecops", "sre", "site reliability", "platform engineer", "cloud engineer",
+  "infrastructure engineer", "devops engineer", "cloud devops", "aws engineer",
+  "kubernetes", "terraform", "gitops", "release engineer", "build and release", "sysadmin",
+]
+# avoid titles above the 2-4 yr band (senior/staff/lead/manager) and non-technical roles
+exclude_title = [
+  "senior", "sr", "snr", "lead", "principal", "staff", "manager", "head", "director",
+  "architect", "intern", "internship", "trainee", "associate", "sales", "recruiter", "marketing",
+]
+# A job passes if its location contains any term below (case-insensitive).
+# Jobs with no location always pass. Empty list = accept every location.
+locations = [
+  "india", "bangalore", "bengaluru", "hyderabad", "chennai", "pune", "mumbai", "delhi",
+  "gurgaon", "gurugram", "noida", "worldwide", "anywhere", "global", "apac", "asia", "remote",
+]
+max_age_days = 2  # only fresh postings: today, yesterday, or the day before
+
+# interval_minutes keeps each source within its published rate limits.
+[sources.remoteok]
+enabled = true
+interval_minutes = 30
+
+[sources.weworkremotely]
+enabled = true
+interval_minutes = 30
+feeds = ["https://weworkremotely.com/categories/remote-devops-sysadmin-jobs.rss"]
+
+[sources.remotive]          # asks for max ~4 requests/day
+enabled = true
+interval_minutes = 360
+categories = ["devops"]
+
+[sources.jobicy]            # asks for no more than 1 request/hour
+enabled = true
+interval_minutes = 120
+tags = ["devops", "sre", "kubernetes"]
+
+[sources.himalayas]         # data refreshes once a day
+enabled = true
+interval_minutes = 720
+queries = ["devops", "sre", "platform engineer", "cloud engineer"]
+
+[sources.arbeitnow]         # mostly Germany/EU; add "germany" etc. to filters.locations to see them
+enabled = true
+interval_minutes = 60
+pages = 2
+
+[sources.adzuna]            # DISABLED: Adzuna now charges £8/month (free tier = 25 test calls only).
+                            # India coverage is handled by himalayas + the general sources. To re-enable:
+                            # get keys at developer.adzuna.com, set enabled=true, and fill the .env values.
+enabled = false
+interval_minutes = 720      # if re-enabled, poll only once every 12h to stay light
+countries = ["in"]
+queries = ["devops engineer", "site reliability engineer", "platform engineer", "cloud engineer", "kubernetes"]
+max_days_old = 2
+
+# Official public job-board APIs of individual companies. Use the slug from the careers URL, e.g.
+# boards.greenhouse.io/<slug>, jobs.lever.co/<slug>, jobs.ashbyhq.com/<slug>. Unknown slugs are skipped.
+[sources.greenhouse]
+enabled = true
+interval_minutes = 60
+companies = ["gitlab", "cloudflare", "datadog", "elastic", "mongodb", "pagerduty", "databricks"]
+
+[sources.lever]
+enabled = true
+interval_minutes = 60
+companies = ["palantir", "spotify"]
+
+[sources.ashby]
+enabled = true
+interval_minutes = 60
+companies = ["linear", "ramp", "notion"]

@@ -1,0 +1,56 @@
+name: scrape
+
+on:
+  schedule:
+    - cron: "7 * * * *" # hourly; GitHub may delay scheduled runs a few minutes
+  workflow_dispatch:
+
+# Serialize runs so two jobs never write the state at the same time.
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+permissions:
+  contents: write # only used to push the `state` branch
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # State (already-sent jobs) lives on an orphan `state` branch, so it never expires like a cache would.
+      - name: Restore state
+        run: |
+          mkdir -p state
+          if [ -n "$(git ls-remote --heads origin state)" ]; then
+            git fetch --depth=1 origin state
+            git show FETCH_HEAD:state/state.json > state/state.json
+          fi
+
+      - run: python -m jobscout
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+
+      - name: Save state
+        if: always()
+        run: |
+          [ -f state/state.json ] || exit 0
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git checkout --orphan state-new
+          git rm -rf --cached . -q
+          git add -f state/state.json
+          git commit -qm "state"
+          git push -f origin state-new:state
