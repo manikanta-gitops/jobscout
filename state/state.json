@@ -1,0 +1,195 @@
+{
+ "seen": {
+  "arbeitnow:remote-platform-engineer-paris-409658": "2026-10-25T14:04:46.666288+00:00",
+  "himalayas:https://himalayas.app/companies/selector/jobs/devops-sre-7599724946": "2026-10-25T14:04:46.666288+00:00",
+  "jobicy:156946": "2026-10-25T14:04:46.666288+00:00",
+  "himalayas:https://himalayas.app/companies/photon-interactive-uk-limited/jobs/devops-sre-platform-engineers-offshore": "2026-10-25T14:04:46.666288+00:00",
+  "arbeitnow:remote-devops-engineer-242127": "2026-10-25T14:04:46.666288+00:00",
+  "jobicy:149563": "2026-10-25T14:04:46.666288+00:00",
+  "jobicy:149553": "2026-10-25T14:04:46.666288+00:00",
+  "jobicy:149547": "2026-10-25T14:04:46.666288+00:00",
+  "himalayas:https://himalayas.app/companies/terminal-3/jobs/devops-engineer-azure-contractor": "2026-10-26T06:01:26.038378+00:00",
+  "himalayas:https://himalayas.app/companies/photon-interactive-uk-limited/jobs/integration-engineer-offshore": "2026-10-26T06:01:26.038378+00:00",
+  "tgchannels:ITReferral_Jobs/9780": "2026-10-26T06:12:25.499400+00:00",
+  "weworkremotely:https://weworkremotely.com/remote-jobs/upstart-devops-engineer-ii-cloud-platform": "2026-10-26T12:48:29.986620+00:00",
+  "himalayas:https://himalayas.app/companies/avahi/jobs/devops-engineer-3377214920": "2026-10-26T19:11:05.661787+00:00",
+  "jooble:5875188544670363394": "2026-10-27T04:52:08.026936+00:00",
+  "tgchannels:ITReferral_Jobs/9848": "2026-10-27T07:44:10.092419+00:00",
+  "tgchannels:ITReferral_Jobs/9844": "2026-10-27T07:44:10.092419+00:00",
+  "tgchannels:ITReferral_Jobs/9838": "2026-10-27T07:44:10.092419+00:00",
+  "jooble:6121476983267292834": "2026-10-27T16:27:36.387855+00:00",
+  "tgchannels:ITReferral_Jobs/9863": "2026-10-27T18:58:30.516780+00:00",
+  "arbeitnow:devops-engineer-research-participants-united-kingdom-289387": "2026-10-27T21:14:17.226079+00:00",
+  "tgchannels:ITReferral_Jobs/9896": "2026-10-28T08:16:56.157874+00:00",
+  "tgchannels:ITReferral_Jobs/9894": "2026-10-28T08:16:56.157874+00:00",
+  "tgchannels:ITReferral_Jobs/9892": "2026-10-28T08:16:56.157874+00:00",
+  "tgchannels:ITReferral_Jobs/9902": "2026-10-28T15:13:01.107535+00:00",
+  "tgchannels:ITReferral_Jobs/9930": "2026-10-29T11:46:05.511800+00:00",
+  "arbeitnow:remote-backend-engineer-source-code-repository-services-ruby-60596": "2026-10-30T00:49:40.557719+00:00",
+  "arbeitnow:devops-engineer-100-remote-united-kindom-394367": "2026-10-30T06:59:57.228397+00:00",
+  "tgchannels:ITReferral_Jobs/9988": "2026-10-30T07:51:35.771526+00:00",
+  "tgchannels:ITReferral_Jobs/9976": "2026-10-30T07:51:35.771526+00:00",
+  "weworkremotely:https://weworkremotely.com/remote-jobs/smartsheet-devops-engineer-edge-and-developer-experience-remote-eligible-in-bulgaria": "2026-10-30T14:00:32.140626+00:00",
+  "himalayas:https://himalayas.app/companies/sophos/jobs/site-reliability-engineer": "2026-10-30T14:00:32.140626+00:00",
+  "himalayas:https://himalayas.app/companies/ford/jobs/identity-security-operations-engineer": "2026-10-31T05:24:06.627506+00:00",
+  "tgchannels:ITReferral_Jobs/10049": "2026-10-31T14:50:23.877791+00:00"
+ },
+ "fingerprints": {
+  "fp:itq|platform engineer": [
+   "arbeitnow",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:selector|devops sre": [
+   "himalayas",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:supabase|platform engineer compute capacity": [
+   "jobicy",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:photon interactive uk limited|devops sre platform engineers offshore": [
+   "himalayas",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:swarmaero|devops engineer": [
+   "arbeitnow",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:canonical|python and kubernetes software engineer data workflows ai ml analytics": [
+   "jobicy",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:canonical|site reliability gitops engineer": [
+   "jobicy",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:canonical|site reliability engineer": [
+   "jobicy",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:terminal 3|devops engineer azure contractor": [
+   "himalayas",
+   "2026-10-26T06:01:26.038378+00:00"
+  ],
+  "fp:photon interactive uk limited|integration engineer offshore": [
+   "himalayas",
+   "2026-10-26T06:01:26.038378+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title devops engineer company ust location bangalore details": [
+   "tgchannels",
+   "2026-10-26T06:12:25.499400+00:00"
+  ],
+  "fp:upstart|devops engineer ii cloud platform": [
+   "weworkremotely",
+   "2026-10-26T12:48:29.986620+00:00"
+  ],
+  "fp:avahi|devops engineer": [
+   "himalayas",
+   "2026-10-26T19:11:05.661787+00:00"
+  ],
+  "fp:specific labs|platform engineer": [
+   "jooble",
+   "2026-10-27T16:27:36.387855+00:00"
+  ],
+  "fp:itreferral jobs|ci cd devops certifications in salesforce architecture fsc are preferred apply jask": [
+   "tgchannels",
+   "2026-10-27T07:44:10.092419+00:00"
+  ],
+  "fp:itreferral jobs|docker kubernetes": [
+   "tgchannels",
+   "2026-10-27T07:44:10.092419+00:00"
+  ],
+  "fp:itreferral jobs|ansible terraform nice to have aws azure gcp ci cd infrastructure automation apply": [
+   "tgchannels",
+   "2026-10-27T07:44:10.092419+00:00"
+  ],
+  "fp:itreferral jobs|devops ci cd about the company geoserve is a dubai based maritime technology startup": [
+   "tgchannels",
+   "2026-10-27T18:58:30.516780+00:00"
+  ],
+  "fp:prolificacademicltd|devops engineer research participants united kingdom": [
+   "arbeitnow",
+   "2026-10-27T21:14:17.226079+00:00"
+  ],
+  "fp:itreferral jobs|job alert role devops support engineer location mumbai experience 2 6 years d": [
+   "tgchannels",
+   "2026-10-28T08:16:56.157874+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title devops engineer company hcl technologies location bangal": [
+   "tgchannels",
+   "2026-10-28T08:16:56.157874+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title devops engineer company infolexus solutions client hiring": [
+   "tgchannels",
+   "2026-10-28T08:16:56.157874+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title full stack engineer java devops ai company hipath tec": [
+   "tgchannels",
+   "2026-10-28T15:13:01.107535+00:00"
+  ],
+  "fp:itreferral jobs|job alert role devops engineer company mr compliance location pune on site": [
+   "tgchannels",
+   "2026-10-29T11:46:05.511800+00:00"
+  ],
+  "fp:gitlab|backend engineer source code repository services ruby": [
+   "arbeitnow",
+   "2026-10-30T00:49:40.557719+00:00"
+  ],
+  "fp:tether operations limited|devops engineer 100 remote": [
+   "arbeitnow",
+   "2026-10-30T06:59:57.228397+00:00"
+  ],
+  "fp:itreferral jobs|git terraform ci cd and cloud build": [
+   "tgchannels",
+   "2026-10-30T07:51:35.771526+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title devops engineer company xponentium location bangalore h": [
+   "tgchannels",
+   "2026-10-30T07:51:35.771526+00:00"
+  ],
+  "fp:smartsheet|devops engineer edge and developer experience remote eligible in bulgaria": [
+   "weworkremotely",
+   "2026-10-30T14:00:32.140626+00:00"
+  ],
+  "fp:sophos|site reliability engineer": [
+   "himalayas",
+   "2026-10-30T14:00:32.140626+00:00"
+  ],
+  "fp:ford|identity security operations engineer": [
+   "himalayas",
+   "2026-10-31T05:24:06.627506+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title platform engineer neo4j company yash technologies locat": [
+   "tgchannels",
+   "2026-10-31T14:50:23.877791+00:00"
+  ]
+ },
+ "last_run": {
+  "remotive": "2026-10-31T12:12:36.514763+00:00",
+  "himalayas": "2026-10-31T17:39:13.236609+00:00",
+  "weworkremotely": "2026-10-31T17:39:13.236609+00:00",
+  "remoteok": "2026-10-31T17:39:13.236609+00:00",
+  "arbeitnow": "2026-10-31T17:39:13.236609+00:00",
+  "greenhouse": "2026-10-31T17:39:13.236609+00:00",
+  "ashby": "2026-10-31T17:39:13.236609+00:00",
+  "lever": "2026-10-31T17:39:13.236609+00:00",
+  "jobicy": "2026-10-31T17:39:13.236609+00:00",
+  "smartrecruiters": "2026-10-31T17:39:13.236609+00:00",
+  "jooble": "2026-10-31T12:12:36.514763+00:00",
+  "tgchannels": "2026-10-31T14:50:23.877791+00:00"
+ },
+ "failures": {
+  "remotive": 0,
+  "himalayas": 0,
+  "weworkremotely": 0,
+  "remoteok": 0,
+  "arbeitnow": 0,
+  "greenhouse": 0,
+  "ashby": 0,
+  "lever": 0,
+  "jobicy": 0,
+  "smartrecruiters": 0,
+  "jooble": 0,
+  "tgchannels": 0
+ }
+}
