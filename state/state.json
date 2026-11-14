@@ -1,0 +1,433 @@
+{
+ "seen": {
+  "arbeitnow:remote-platform-engineer-paris-409658": "2026-10-25T14:04:46.666288+00:00",
+  "himalayas:https://himalayas.app/companies/selector/jobs/devops-sre-7599724946": "2026-10-25T14:04:46.666288+00:00",
+  "jobicy:156946": "2026-10-25T14:04:46.666288+00:00",
+  "himalayas:https://himalayas.app/companies/photon-interactive-uk-limited/jobs/devops-sre-platform-engineers-offshore": "2026-10-25T14:04:46.666288+00:00",
+  "arbeitnow:remote-devops-engineer-242127": "2026-10-25T14:04:46.666288+00:00",
+  "jobicy:149563": "2026-10-25T14:04:46.666288+00:00",
+  "jobicy:149553": "2026-10-25T14:04:46.666288+00:00",
+  "jobicy:149547": "2026-10-25T14:04:46.666288+00:00",
+  "himalayas:https://himalayas.app/companies/terminal-3/jobs/devops-engineer-azure-contractor": "2026-10-26T06:01:26.038378+00:00",
+  "himalayas:https://himalayas.app/companies/photon-interactive-uk-limited/jobs/integration-engineer-offshore": "2026-10-26T06:01:26.038378+00:00",
+  "tgchannels:ITReferral_Jobs/9780": "2026-10-26T06:12:25.499400+00:00",
+  "weworkremotely:https://weworkremotely.com/remote-jobs/upstart-devops-engineer-ii-cloud-platform": "2026-10-26T12:48:29.986620+00:00",
+  "himalayas:https://himalayas.app/companies/avahi/jobs/devops-engineer-3377214920": "2026-10-26T19:11:05.661787+00:00",
+  "jooble:5875188544670363394": "2026-10-27T04:52:08.026936+00:00",
+  "tgchannels:ITReferral_Jobs/9848": "2026-10-27T07:44:10.092419+00:00",
+  "tgchannels:ITReferral_Jobs/9844": "2026-10-27T07:44:10.092419+00:00",
+  "tgchannels:ITReferral_Jobs/9838": "2026-10-27T07:44:10.092419+00:00",
+  "jooble:6121476983267292834": "2026-10-27T16:27:36.387855+00:00",
+  "tgchannels:ITReferral_Jobs/9863": "2026-10-27T18:58:30.516780+00:00",
+  "arbeitnow:devops-engineer-research-participants-united-kingdom-289387": "2026-10-27T21:14:17.226079+00:00",
+  "tgchannels:ITReferral_Jobs/9896": "2026-10-28T08:16:56.157874+00:00",
+  "tgchannels:ITReferral_Jobs/9894": "2026-10-28T08:16:56.157874+00:00",
+  "tgchannels:ITReferral_Jobs/9892": "2026-10-28T08:16:56.157874+00:00",
+  "tgchannels:ITReferral_Jobs/9902": "2026-10-28T15:13:01.107535+00:00",
+  "tgchannels:ITReferral_Jobs/9930": "2026-10-29T11:46:05.511800+00:00",
+  "arbeitnow:remote-backend-engineer-source-code-repository-services-ruby-60596": "2026-10-30T00:49:40.557719+00:00",
+  "arbeitnow:devops-engineer-100-remote-united-kindom-394367": "2026-10-30T06:59:57.228397+00:00",
+  "tgchannels:ITReferral_Jobs/9988": "2026-10-30T07:51:35.771526+00:00",
+  "tgchannels:ITReferral_Jobs/9976": "2026-10-30T07:51:35.771526+00:00",
+  "weworkremotely:https://weworkremotely.com/remote-jobs/smartsheet-devops-engineer-edge-and-developer-experience-remote-eligible-in-bulgaria": "2026-10-30T14:00:32.140626+00:00",
+  "himalayas:https://himalayas.app/companies/sophos/jobs/site-reliability-engineer": "2026-10-30T14:00:32.140626+00:00",
+  "himalayas:https://himalayas.app/companies/ford/jobs/identity-security-operations-engineer": "2026-10-31T05:24:06.627506+00:00",
+  "tgchannels:ITReferral_Jobs/10049": "2026-10-31T14:50:23.877791+00:00",
+  "tgchannels:ITReferral_Jobs/10057": "2026-11-01T07:28:27.352871+00:00",
+  "tgchannels:ITReferral_Jobs/10055": "2026-11-01T07:28:27.352871+00:00",
+  "tgchannels:jobsinternshipswale/1074": "2026-11-01T14:27:03.842627+00:00",
+  "jooble:-6538913891495796155": "2026-11-01T14:58:35.406726+00:00",
+  "jooble:-4275053206521211896": "2026-11-01T14:58:35.406726+00:00",
+  "jooble:2166103852503605477": "2026-11-01T23:30:32.415196+00:00",
+  "jooble:4429964537478189736": "2026-11-01T23:30:32.415196+00:00",
+  "arbeitnow:remote-site-reliability-engineer-428574": "2026-11-02T23:26:14.528496+00:00",
+  "arbeitnow:remote-site-reliability-engineer-473544": "2026-11-02T23:26:14.528496+00:00",
+  "arbeitnow:remote-devops-engineer-cimar-london-341410": "2026-11-03T06:34:14.317447+00:00",
+  "jooble:-8891106276120205052": "2026-11-03T06:34:14.317447+00:00",
+  "jooble:862822900189223131": "2026-11-03T06:34:14.317447+00:00",
+  "jooble:-6683526805182457974": "2026-11-03T06:34:14.317447+00:00",
+  "tgchannels:ITReferral_Jobs/10126": "2026-11-03T08:17:34.814830+00:00",
+  "tgchannels:ITReferral_Jobs/10124": "2026-11-03T08:17:34.814830+00:00",
+  "tgchannels:ITReferral_Jobs/10122": "2026-11-03T08:17:34.814830+00:00",
+  "arbeitnow:remote-infrastructure-platform-engineer-274392": "2026-11-03T20:55:06.994402+00:00",
+  "arbeitnow:remote-site-reliability-engineer-427496": "2026-11-03T20:55:06.994402+00:00",
+  "himalayas:https://himalayas.app/companies/pythian/jobs/storage-and-backup-system-administrator": "2026-11-03T20:55:06.994402+00:00",
+  "jooble:-3046934767076449641": "2026-11-04T01:14:55.065687+00:00",
+  "tgchannels:ITReferral_Jobs/10143": "2026-11-04T08:06:26.941348+00:00",
+  "arbeitnow:power-platform-and-azure-devops-expert-remote-from-eu-amsterdam-110494": "2026-11-04T08:59:59.869903+00:00",
+  "tgchannels:ITReferral_Jobs/10175": "2026-11-04T16:14:08.965902+00:00",
+  "tgchannels:ITReferral_Jobs/10188": "2026-11-05T09:21:27.947946+00:00",
+  "himalayas:https://himalayas.app/companies/partner-one-capital/jobs/devops-automation-specialistjob": "2026-11-06T17:24:50.428016+00:00",
+  "himalayas:https://himalayas.app/companies/zensar/jobs/sre-offshore-rishab": "2026-11-06T17:24:50.428016+00:00",
+  "himalayas:https://himalayas.app/companies/backblaze/jobs/site-reliability-engineer-ii": "2026-11-06T17:24:50.428016+00:00",
+  "tgchannels:ITReferral_Jobs/10228": "2026-11-06T17:31:58.553624+00:00",
+  "arbeitnow:trading-infrastructure-engineer-algorithmic-power-trading-berlin-218822": "2026-11-06T23:00:16.352371+00:00",
+  "jobicy:159380": "2026-11-06T23:00:16.352371+00:00",
+  "jobicy:159366": "2026-11-06T23:00:16.352371+00:00",
+  "himalayas:https://himalayas.app/companies/quantumloopai/jobs/azure-devops-infrastructure-engineer-india-remote": "2026-11-07T09:55:47.649859+00:00",
+  "arbeitnow:site-reliability-engineer-492426": "2026-11-08T00:26:35.627738+00:00",
+  "himalayas:https://himalayas.app/companies/gruve/jobs/l2-cloud-operations-engineer-azure-aws": "2026-11-08T00:26:35.627738+00:00",
+  "remoteok:1137701": "2026-11-08T00:26:35.627738+00:00",
+  "himalayas:https://himalayas.app/companies/jolera/jobs/elastic-engineer": "2026-11-09T06:05:03.474689+00:00",
+  "tgchannels:ITReferral_Jobs/10301": "2026-11-10T11:50:49.128388+00:00",
+  "arbeitnow:remote-devops-engineer-431503": "2026-11-10T16:58:32.856810+00:00",
+  "jooble:7264121516011146751": "2026-11-10T16:58:32.856810+00:00",
+  "arbeitnow:contract-platform-engineer-373574": "2026-11-10T22:18:38.128219+00:00",
+  "weworkremotely:https://weworkremotely.com/remote-jobs/knack-cloud-engineer-1": "2026-11-11T02:42:49.093706+00:00",
+  "arbeitnow:devops-engineer-late-shift2-pm-10pm-103130": "2026-11-11T18:37:31.626398+00:00",
+  "arbeitnow:devops-engineer-luma-292536": "2026-11-11T18:37:31.626398+00:00",
+  "jooble:6454462324492132789": "2026-11-12T01:28:29.795252+00:00",
+  "jooble:-4239040486741879299": "2026-11-12T01:28:29.795252+00:00",
+  "tgchannels:ITReferral_Jobs/10370": "2026-11-12T08:51:06.731309+00:00",
+  "tgchannels:jobsinternshipswale/1099": "2026-11-12T08:51:06.731309+00:00",
+  "jooble:7195129136355082911": "2026-11-12T09:42:31.064468+00:00",
+  "arbeitnow:infrastructure-engineer-london-356073": "2026-11-13T00:09:41.944456+00:00",
+  "himalayas:https://himalayas.app/companies/grovebybanyan/jobs/platform-engineer-ai": "2026-11-13T22:31:29.035313+00:00",
+  "arbeitnow:site-reliability-engineer-remotelocated-in-the-united-kingdom-272906": "2026-11-14T03:04:19.836138+00:00",
+  "tgchannels:ITReferral_Jobs/10464": "2026-11-14T10:51:30.701695+00:00",
+  "tgchannels:ITReferral_Jobs/10454": "2026-11-14T10:51:30.701695+00:00",
+  "tgchannels:ITReferral_Jobs/10476": "2026-11-14T16:46:38.144926+00:00"
+ },
+ "fingerprints": {
+  "fp:itq|platform engineer": [
+   "arbeitnow",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:selector|devops sre": [
+   "himalayas",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:supabase|platform engineer compute capacity": [
+   "jobicy",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:photon interactive uk limited|devops sre platform engineers offshore": [
+   "himalayas",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:swarmaero|devops engineer": [
+   "arbeitnow",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:canonical|python and kubernetes software engineer data workflows ai ml analytics": [
+   "jobicy",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:canonical|site reliability gitops engineer": [
+   "jobicy",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:canonical|site reliability engineer": [
+   "jobicy",
+   "2026-10-25T14:04:46.666288+00:00"
+  ],
+  "fp:terminal 3|devops engineer azure contractor": [
+   "himalayas",
+   "2026-10-26T06:01:26.038378+00:00"
+  ],
+  "fp:photon interactive uk limited|integration engineer offshore": [
+   "himalayas",
+   "2026-10-26T06:01:26.038378+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title devops engineer company ust location bangalore details": [
+   "tgchannels",
+   "2026-11-12T08:51:06.731309+00:00"
+  ],
+  "fp:upstart|devops engineer ii cloud platform": [
+   "weworkremotely",
+   "2026-10-26T12:48:29.986620+00:00"
+  ],
+  "fp:avahi|devops engineer": [
+   "himalayas",
+   "2026-10-26T19:11:05.661787+00:00"
+  ],
+  "fp:specific labs|platform engineer": [
+   "jooble",
+   "2026-10-27T16:27:36.387855+00:00"
+  ],
+  "fp:itreferral jobs|ci cd devops certifications in salesforce architecture fsc are preferred apply jask": [
+   "tgchannels",
+   "2026-10-27T07:44:10.092419+00:00"
+  ],
+  "fp:itreferral jobs|docker kubernetes": [
+   "tgchannels",
+   "2026-10-27T07:44:10.092419+00:00"
+  ],
+  "fp:itreferral jobs|ansible terraform nice to have aws azure gcp ci cd infrastructure automation apply": [
+   "tgchannels",
+   "2026-10-27T07:44:10.092419+00:00"
+  ],
+  "fp:itreferral jobs|devops ci cd about the company geoserve is a dubai based maritime technology startup": [
+   "tgchannels",
+   "2026-10-27T18:58:30.516780+00:00"
+  ],
+  "fp:prolificacademicltd|devops engineer research participants united kingdom": [
+   "arbeitnow",
+   "2026-10-27T21:14:17.226079+00:00"
+  ],
+  "fp:itreferral jobs|job alert role devops support engineer location mumbai experience 2 6 years d": [
+   "tgchannels",
+   "2026-10-28T08:16:56.157874+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title devops engineer company hcl technologies location bangal": [
+   "tgchannels",
+   "2026-10-28T08:16:56.157874+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title devops engineer company infolexus solutions client hiring": [
+   "tgchannels",
+   "2026-10-28T08:16:56.157874+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title full stack engineer java devops ai company hipath tec": [
+   "tgchannels",
+   "2026-10-28T15:13:01.107535+00:00"
+  ],
+  "fp:itreferral jobs|job alert role devops engineer company mr compliance location pune on site": [
+   "tgchannels",
+   "2026-10-29T11:46:05.511800+00:00"
+  ],
+  "fp:gitlab|backend engineer source code repository services ruby": [
+   "arbeitnow",
+   "2026-10-30T00:49:40.557719+00:00"
+  ],
+  "fp:tether operations limited|devops engineer 100 remote": [
+   "arbeitnow",
+   "2026-10-30T06:59:57.228397+00:00"
+  ],
+  "fp:itreferral jobs|git terraform ci cd and cloud build": [
+   "tgchannels",
+   "2026-10-30T07:51:35.771526+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title devops engineer company xponentium location bangalore h": [
+   "tgchannels",
+   "2026-10-30T07:51:35.771526+00:00"
+  ],
+  "fp:smartsheet|devops engineer edge and developer experience remote eligible in bulgaria": [
+   "weworkremotely",
+   "2026-10-30T14:00:32.140626+00:00"
+  ],
+  "fp:sophos|site reliability engineer": [
+   "himalayas",
+   "2026-10-30T14:00:32.140626+00:00"
+  ],
+  "fp:ford|identity security operations engineer": [
+   "himalayas",
+   "2026-10-31T05:24:06.627506+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title platform engineer neo4j company yash technologies locat": [
+   "tgchannels",
+   "2026-10-31T14:50:23.877791+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title devops engineer company bacancy technology location ahme": [
+   "tgchannels",
+   "2026-11-03T08:17:34.814830+00:00"
+  ],
+  "fp:itreferral jobs|job alert role devops cloud platform engineer aws kubernetes company hirealp": [
+   "tgchannels",
+   "2026-11-01T07:28:27.352871+00:00"
+  ],
+  "fp:jobsinternshipswale|binance hack a devops engineer laptop got compromised https x com imarun chauhan statu": [
+   "tgchannels",
+   "2026-11-01T14:27:03.842627+00:00"
+  ],
+  "fp:velaura ai|soc design verification engineer bangalore": [
+   "jooble",
+   "2026-11-01T23:30:32.415196+00:00"
+  ],
+  "fp:falconx|security operations engineer": [
+   "jooble",
+   "2026-11-01T23:30:32.415196+00:00"
+  ],
+  "fp:ecosio|site reliability engineer f m d": [
+   "arbeitnow",
+   "2026-11-02T23:26:14.528496+00:00"
+  ],
+  "fp:deephealth|devops engineer cimar": [
+   "arbeitnow",
+   "2026-11-03T06:34:14.317447+00:00"
+  ],
+  "fp:jobleads us|global ai engineering program leader hybrid": [
+   "jooble",
+   "2026-11-03T06:34:14.317447+00:00"
+  ],
+  "fp:teva pharmaceuticals|mgr maintenance engineering": [
+   "jooble",
+   "2026-11-03T06:34:14.317447+00:00"
+  ],
+  "fp:honeywell technologies|advanced cyber sec archt engr": [
+   "jooble",
+   "2026-11-03T06:34:14.317447+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title sre3 site reliability engineer location pan india detai": [
+   "tgchannels",
+   "2026-11-03T08:17:34.814830+00:00"
+  ],
+  "fp:itreferral jobs|job alert role devops cloud platform engineer aws kubernetes location pan in": [
+   "tgchannels",
+   "2026-11-03T08:17:34.814830+00:00"
+  ],
+  "fp:neuphonic|infrastructure platform engineer": [
+   "arbeitnow",
+   "2026-11-03T20:55:06.994402+00:00"
+  ],
+  "fp:hozah|site reliability engineer": [
+   "arbeitnow",
+   "2026-11-03T20:55:06.994402+00:00"
+  ],
+  "fp:pythian|storage and backup system administrator": [
+   "himalayas",
+   "2026-11-03T20:55:06.994402+00:00"
+  ],
+  "fp:mastercard|sofware engineer priceless platform": [
+   "jooble",
+   "2026-11-04T01:14:55.065687+00:00"
+  ],
+  "fp:itreferral jobs|jira azure devops": [
+   "tgchannels",
+   "2026-11-04T08:06:26.941348+00:00"
+  ],
+  "fp:almaviva de belgique|power platform and azure devops expert remote from eu": [
+   "arbeitnow",
+   "2026-11-04T08:59:59.869903+00:00"
+  ],
+  "fp:itreferral jobs|top mnc hiring new job alert position infrastructure engineer company barclays": [
+   "tgchannels",
+   "2026-11-04T16:14:08.965902+00:00"
+  ],
+  "fp:itreferral jobs|collaborate with development devops teams apply ramsha shaikh webprodevelopers com": [
+   "tgchannels",
+   "2026-11-05T09:21:27.947946+00:00"
+  ],
+  "fp:partner one capital|devops automation specialistjob": [
+   "himalayas",
+   "2026-11-06T17:24:50.428016+00:00"
+  ],
+  "fp:zensar|sre offshore rishab": [
+   "himalayas",
+   "2026-11-06T17:24:50.428016+00:00"
+  ],
+  "fp:backblaze|site reliability engineer ii": [
+   "himalayas",
+   "2026-11-06T17:24:50.428016+00:00"
+  ],
+  "fp:ostrom|trading infrastructure engineer algorithmic power trading": [
+   "arbeitnow",
+   "2026-11-06T23:00:16.352371+00:00"
+  ],
+  "fp:supabase|orioledb deployment engineer": [
+   "jobicy",
+   "2026-11-06T23:00:16.352371+00:00"
+  ],
+  "fp:supabase|platform engineer edge networking": [
+   "jobicy",
+   "2026-11-06T23:00:16.352371+00:00"
+  ],
+  "fp:quantumloopai|azure devops infrastructure engineer india remote": [
+   "himalayas",
+   "2026-11-07T09:55:47.649859+00:00"
+  ],
+  "fp:nice|site reliability engineer": [
+   "arbeitnow",
+   "2026-11-08T00:26:35.627738+00:00"
+  ],
+  "fp:gruve|l2 cloud operations engineer azure aws": [
+   "himalayas",
+   "2026-11-08T00:26:35.627738+00:00"
+  ],
+  "fp:salvo software|ai developer": [
+   "remoteok",
+   "2026-11-08T00:26:35.627738+00:00"
+  ],
+  "fp:jolera|elastic engineer": [
+   "himalayas",
+   "2026-11-09T06:05:03.474689+00:00"
+  ],
+  "fp:itreferral jobs|job alert role devsecops engineer company ust location kochi trivandrum deta": [
+   "tgchannels",
+   "2026-11-10T11:50:49.128388+00:00"
+  ],
+  "fp:merge|devops engineer": [
+   "arbeitnow",
+   "2026-11-10T16:58:32.856810+00:00"
+  ],
+  "fp:josh pros llc|controls engineer night shift onsite": [
+   "jooble",
+   "2026-11-10T16:58:32.856810+00:00"
+  ],
+  "fp:yld|contract platform engineer": [
+   "arbeitnow",
+   "2026-11-10T22:18:38.128219+00:00"
+  ],
+  "fp:knack|cloud engineer": [
+   "weworkremotely",
+   "2026-11-11T02:42:49.093706+00:00"
+  ],
+  "fp:nice|devops engineer late shift 2 pm 10pm": [
+   "arbeitnow",
+   "2026-11-11T18:37:31.626398+00:00"
+  ],
+  "fp:dotmatics|devops engineer luma": [
+   "arbeitnow",
+   "2026-11-11T18:37:31.626398+00:00"
+  ],
+  "fp:ntt data inc|techops engineer": [
+   "jooble",
+   "2026-11-12T09:42:31.064468+00:00"
+  ],
+  "fp:jobsinternshipswale|we are hiring aws devops engineer location bangalore work mode as per client req": [
+   "tgchannels",
+   "2026-11-12T08:51:06.731309+00:00"
+  ],
+  "fp:griffin|infrastructure engineer": [
+   "arbeitnow",
+   "2026-11-13T00:09:41.944456+00:00"
+  ],
+  "fp:banyan software|platform engineer ai": [
+   "himalayas",
+   "2026-11-13T22:31:29.035313+00:00"
+  ],
+  "fp:knowbe4|site reliability engineer remote located in the united kingdom": [
+   "arbeitnow",
+   "2026-11-14T03:04:19.836138+00:00"
+  ],
+  "fp:itreferral jobs|only 16 seats left master devops this year code isn t enough learn to build depl": [
+   "tgchannels",
+   "2026-11-14T10:51:30.701695+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title devops engineer company exl service location gurgaon d": [
+   "tgchannels",
+   "2026-11-14T10:51:30.701695+00:00"
+  ],
+  "fp:itreferral jobs|job alert role title azure cloud sre engineer company leading foreign mnc loca": [
+   "tgchannels",
+   "2026-11-14T16:46:38.144926+00:00"
+  ]
+ },
+ "last_run": {
+  "remotive": "2026-11-14T16:59:04.946244+00:00",
+  "himalayas": "2026-11-14T16:59:04.946244+00:00",
+  "weworkremotely": "2026-11-14T16:59:04.946244+00:00",
+  "remoteok": "2026-11-14T16:59:04.946244+00:00",
+  "arbeitnow": "2026-11-14T16:59:04.946244+00:00",
+  "greenhouse": "2026-11-14T16:59:04.946244+00:00",
+  "ashby": "2026-11-14T16:59:04.946244+00:00",
+  "lever": "2026-11-14T16:59:04.946244+00:00",
+  "jobicy": "2026-11-14T16:59:04.946244+00:00",
+  "smartrecruiters": "2026-11-14T16:59:04.946244+00:00",
+  "jooble": "2026-11-14T16:59:04.946244+00:00",
+  "tgchannels": "2026-11-14T16:46:38.144926+00:00"
+ },
+ "failures": {
+  "remotive": 0,
+  "himalayas": 0,
+  "weworkremotely": 0,
+  "remoteok": 0,
+  "arbeitnow": 0,
+  "greenhouse": 0,
+  "ashby": 0,
+  "lever": 0,
+  "jobicy": 0,
+  "smartrecruiters": 0,
+  "jooble": 0,
+  "tgchannels": 0
+ }
+}
