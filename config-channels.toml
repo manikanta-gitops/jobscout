@@ -1,6 +1,8 @@
 # Cloud config for the 5-minute channel watcher (workflows/channels.yml).
 # Powered by the public repo's unlimited Actions minutes. The boards workflow (scrape.yml)
 # runs hourly from config.toml; the two share the repo but keep separate state files.
+max_per_run = 30
+first_run_limit = 10
 
 [filters]
 include = [
@@ -9,21 +11,25 @@ include = [
   "kubernetes", "k8s", "terraform", "gitops", "release engineer", "build and release",
   "sysadmin", "deployment engineer", "cloud operations", "devops support",
 ]
+# Seniority and entry-level titles are also hard-rejected by taxonomy.py.
 exclude_title = [
-  "senior", "sr", "snr", "lead", "principal", "staff", "manager", "head", "director",
-  "architect", "intern", "internship", "trainee", "associate", "sales", "recruiter", "marketing",
+  "intern", "internship", "trainee", "apprentice", "fresher", "graduate", "campus",
+  "junior", "jr", "entry level", "associate",
+  "senior", "sr", "snr", "staff", "principal", "lead", "head", "manager",
+  "director", "architect", "vp",
+  "sales", "recruiter", "marketing",
 ]
-locations = [
-  "india", "bangalore", "bengaluru", "hyderabad", "chennai", "pune", "mumbai", "delhi",
-  "gurgaon", "gurugram", "noida", "kolkata", "ahmedabad", "indore",
-  "worldwide", "anywhere", "global", "apac", "asia", "remote",
-]
+# Only the three real statuses are meaningful. City/region aliases are still
+# accepted by filters.py for backwards compatibility.
+locations = ["india", "unverified"]
 max_age_days = 2
+
+[matching]
+send_score = 70
+review_score = 40
+max_experience_years = 4
 
 [sources.tgchannels]
 enabled = true
 interval_minutes = 3
 channels = ["DevOpsBuddys", "itreferral_jobs", "jobscoupe", "jobsinternshipswale"]
-
-max_per_run = 30
-first_run_limit = 10

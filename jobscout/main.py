@@ -13,7 +13,10 @@ from pathlib import Path
 import requests
 from dotenv import load_dotenv
 
+from .details import ensure_description
 from .filters import JobFilter
+from .matching import evaluate, quick_reject
+from .models import Job
 from .notify import Telegram, TelegramError
 from .sources import SOURCES, make_session
 from .store import Store
@@ -39,6 +42,7 @@ def _fetch(name: str, scfg: dict):
 def run_once(cfg: dict, store: Store, tg: Telegram, dry_run: bool) -> None:
     now = datetime.now(timezone.utc)
     flt = JobFilter(cfg.get("filters") or {})
+    match_cfg = cfg.get("matching") or {}
 
     due = []
     for name, scfg in (cfg.get("sources") or {}).items():
@@ -69,33 +73,61 @@ def run_once(cfg: dict, store: Store, tg: Telegram, dry_run: bool) -> None:
 
     fresh, batch_keys, batch_fps = [], set(), {}
     for job in sorted(collected, key=lambda j: j.posted_at or EPOCH, reverse=True):
-        if job.key in batch_keys or batch_fps.get(job.fingerprint, job.source) != job.source:
+        if job.key in batch_keys or job.fingerprint in batch_fps:
             continue
         if store.has(job) or not flt.accepts(job, now):
+            continue
+        reason = quick_reject(job)
+        if reason:
+            log.info("job %s pre-rejected: %s", job.key, reason)
             continue
         batch_keys.add(job.key)
         batch_fps[job.fingerprint] = job.source
         fresh.append(job)
-    log.info("%d new matching jobs", len(fresh))
+    log.info("%d new matching jobs after pre-filter", len(fresh))
+
+    # Fetch missing descriptions for sources that support it
+    session = make_session()
+    for job in fresh:
+        ensure_description(job, session)
+
+    # Score jobs against profile
+    scored = []
+    for job in fresh:
+        result = evaluate(job, match_cfg)
+        if result.verdict == "send":
+            scored.append((job, result))
+        else:
+            log.info("job %s: %s (score=%d, conf=%s, loc=%s) - %s",
+                     job.key, result.verdict, result.score, result.confidence,
+                     result.location_status, "; ".join(result.reasons))
+
+    # Rank by relevance first, then by recency.
+    scored.sort(key=lambda item: (item[1].score, item[0].posted_at or EPOCH), reverse=True)
 
     first_run = store.is_empty
     limit = cfg.get("first_run_limit", 10) if first_run else cfg.get("max_per_run", 30)
-    to_send = fresh[:limit]
+    to_send = scored[:limit]
 
     if dry_run:
-        for job in to_send:
+        for job, result in to_send:
             print(f"[{job.source}] {job.title} | {job.company} | {job.location} | {job.url}")
+            print(f"  score={result.score} confidence={result.confidence} loc={result.location_status}")
+            print(f"  matched: {result.matched_must} | missing: {result.missing_must}")
+            print(f"  reasons: {'; '.join(result.reasons)}")
         return
 
     if first_run:  # baseline: do not replay the whole backlog later
-        for job in fresh[limit:]:
+        for job, _ in scored[limit:]:
             store.add(job, now)
 
     sent = 0
     try:
-        for job in to_send:
+        for job, result in to_send:
             try:
-                tg.send(job)
+                # Include match details in notification
+                msg = format_job_with_match(job, result)
+                tg.send_text(msg)
                 sent += 1
             except TelegramError as e:
                 if not e.is_rejection:
@@ -108,7 +140,59 @@ def run_once(cfg: dict, store: Store, tg: Telegram, dry_run: bool) -> None:
         log.error("sending stopped, will retry next run: %s", e)
     finally:
         store.save(now)
-    log.info("sent %d of %d new jobs", sent, len(fresh))
+    log.info("sent %d of %d matched jobs", sent, len(scored))
+
+
+def _clip(text: str, limit: int) -> str:
+    text = " ".join((text or "").split())
+    return text if len(text) <= limit else text[: limit - 3].rstrip() + "..."
+
+
+def format_job_with_match(job: Job, result) -> str:
+    """Format a matched job for Telegram HTML.
+
+    Includes the experience requirement, matched core skills, relevance score,
+    a concise reason, location/remote information and the apply link.
+    """
+    from html import escape
+
+    # Text nodes only need &, < and > escaped; quotes matter in the href below.
+    def text(value: str) -> str:
+        return escape(value, quote=False)
+
+    lines = [f"<b>{text(job.title)}</b>"]
+    if job.company:
+        lines.append(text(job.company))
+
+    location = (job.location or "").strip() or "Remote / not specified"
+    meta = [f"Location: {text(location)}"]
+    if job.posted_at:
+        meta.append(f"Posted: {job.posted_at:%Y-%m-%d}")
+    lines.append(" | ".join(meta))
+    if job.salary:
+        lines.append(f"Salary: {text(job.salary)}")
+
+    experience = result.experience_note or "Experience not stated"
+    lines.append(
+        f"<b>Match:</b> {result.score}/100 ({text(result.confidence)}) | "
+        f"<b>Experience:</b> {text(experience)}"
+    )
+    if result.matched_must:
+        lines.append(f"<b>Core skills:</b> {text(', '.join(result.matched_must))}")
+    if result.matched_support:
+        lines.append(f"<b>Also:</b> {text(', '.join(result.matched_support[:8]))}")
+
+    # Avoid repeating the skill lists in the reason line.
+    why = [
+        reason
+        for reason in result.reasons
+        if not reason.startswith(("required core skills:", "supporting skills:", "only preferred/incidental"))
+    ]
+    if why:
+        lines.append(f"<b>Why:</b> {text(_clip('; '.join(why), 500))}")
+
+    lines.append(f'{text(job.source)} - <a href="{escape(job.url, quote=True)}">Apply</a>')
+    return "\n".join(lines)
 
 
 def main() -> int:

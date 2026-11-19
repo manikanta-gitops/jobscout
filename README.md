@@ -10,11 +10,14 @@ Sources: RemoteOK, We Work Remotely, Remotive, Jobicy, Himalayas, Arbeitnow, Adz
 flowchart LR
     A[Scheduler] --> B[Restore state]
     B --> C[Fetch due sources in parallel]
-    C --> D[Filter: keywords, location, age]
-    D --> E[Drop already-sent and cross-board duplicates]
-    E --> F[Send to Telegram]
-    F --> G[Save state]
+    C --> D[Filter: title family, location, age]
+    D --> E[Parse experience and score skills]
+    E --> F[Drop already-sent and cross-board duplicates]
+    F --> G[Send ranked matches to Telegram]
+    G --> H[Save state]
 ```
+
+Titles are classified before fetching full descriptions: senior/lead/principal, entry-level and unrelated role families (frontend, data/ML, QA, sales, backend-only, ...) are dropped. Experience is parsed numerically against a 4-year ceiling, so `5+`, `6+`, `4-7` and similar are rejected while `0-4`, `1-3`, `2-4`, `3-5` and `4` pass. Jobs are ranked by overlap with the candidate's core stack (AWS, Kubernetes/EKS, Terraform, Docker, Helm, CI/CD, GitOps/ArgoCD, observability); the Telegram message lists the experience requirement, matched core skills, score and apply link.
 
 State (`state.json`) holds sent job ids, last poll time per source and consecutive failures per source. A source that fails 6 runs in a row triggers a Telegram alert.
 

@@ -41,9 +41,8 @@ class Store:
         return self.failures[source]
 
     def has(self, job: Job) -> bool:
-        """Same posting seen before, or the same role already sent from a different board."""
-        fp = self.fingerprints.get(job.fingerprint)
-        return job.key in self.seen or (fp is not None and fp[0] != job.source)
+        """Same posting seen before, or the same role already sent from any board."""
+        return job.key in self.seen or job.fingerprint in self.fingerprints
 
     def add(self, job: Job, now: datetime) -> None:
         self.seen[job.key] = now.isoformat()

@@ -1,5 +1,7 @@
-# Jobs must match at least one `include` keyword in title/tags and none of `exclude_title`.
-# Tuned for a 2-4 yr DevOps engineer (AWS, Terraform, K8s/EKS, Helm, ArgoCD, GitHub Actions, Datadog).
+# Titles are classified by jobscout/taxonomy.py; `include` is an optional
+# narrowing list and no longer admits an unrelated title just because a skill
+# appears in its tags.
+# Tuned for a 3.5 yr DevOps engineer targeting roles with a <= 4 year ceiling.
 max_per_run = 30       # cap on Telegram messages per run; the rest are sent next run
 first_run_limit = 10   # on an empty state, send only the newest N and mark the rest as seen
 
@@ -9,20 +11,34 @@ include = [
   "infrastructure engineer", "devops engineer", "cloud devops", "aws engineer",
   "kubernetes", "k8s", "terraform", "gitops", "release engineer", "build and release",
   "sysadmin", "deployment engineer", "cloud operations", "devops support",
+  "cloud infrastructure", "platform engineering", "aws devops",
 ]
-# avoid titles above the 2-4 yr band (senior/staff/lead/manager) and non-technical roles
+# Senior/lead/principal and entry-level titles are hard-rejected in
+# taxonomy.py; keeping them here avoids needless description fetches.
 exclude_title = [
-  "senior", "sr", "snr", "lead", "principal", "staff", "manager", "head", "director",
-  "architect", "intern", "internship", "trainee", "associate", "sales", "recruiter", "marketing",
+  "intern", "internship", "trainee", "apprentice", "fresher", "graduate", "campus",
+  "junior", "jr", "entry level", "associate",
+  "senior", "sr", "snr", "staff", "principal", "lead", "head", "manager",
+  "director", "architect", "vp",
+  "sales", "recruiter", "marketing",
 ]
-# A job passes if its location contains any term below (case-insensitive).
-# Jobs with no location always pass. Empty list = accept every location.
+# A job passes if its location status matches any term below.
+# Modes: "india" (verified India city/country), "unverified" (remote/worldwide/APAC/Asia),
+# "outside" (explicit non-India location). Empty list = accept every location status.
 locations = [
-  "india", "bangalore", "bengaluru", "hyderabad", "chennai", "pune", "mumbai", "delhi",
-  "gurgaon", "gurugram", "noida", "kolkata", "ahmedabad", "indore",
-  "worldwide", "anywhere", "global", "apac", "asia", "remote",
+  "india",
+  "unverified",
 ]
 max_age_days = 2  # only fresh postings: today, yesterday, or the day before
+
+# Matching thresholds. Score >= send_score => "send" (high confidence).
+# Score >= review_score => "review" (medium/low confidence, logged not sent).
+# Adjust based on signal-to-noise observed.
+[matching]
+send_score = 70
+review_score = 40
+max_experience_years = 4  # reject 5+/6+/7+/8+ roles and ranges that start at the ceiling
+# A 4-year range that ends well above the ceiling (e.g. 4-7/4-8) is also rejected.
 
 # interval_minutes keeps each source within its published rate limits.
 [sources.remoteok]

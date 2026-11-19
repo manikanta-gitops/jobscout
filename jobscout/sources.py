@@ -58,8 +58,23 @@ def _salary(lo: Any, hi: Any, currency: str = "") -> str:
     return f"{currency} {amount}".strip()
 
 
-def _text(markup: str) -> str:
-    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", markup or ""))).strip()
+def _text(markup: str, keep_newlines: bool = False) -> str:
+    """Strip HTML.
+
+    Descriptions keep paragraph/bullet boundaries so the matcher can separate
+    required skills from nice-to-have sections.  Titles and company names use
+    the default single-line form.
+    """
+    raw = html.unescape(markup or "")
+    if keep_newlines:
+        raw = re.sub(r"(?i)<\s*(?:br|/p|/div|/li|/h[1-6]|/tr)\s*/?>", "\n", raw)
+        raw = re.sub(r"(?i)<\s*(?:p|div|li|h[1-6]|tr)\b[^>]*>", "\n", raw)
+        raw = re.sub(r"<[^>]+>", " ", raw)
+        raw = re.sub(r"[ \t\f\v]+", " ", raw)
+        raw = re.sub(r" *\n *", "\n", raw)
+        raw = re.sub(r"\n{3,}", "\n\n", raw)
+        return raw.strip()
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", raw)).strip()
 
 
 def remoteok(cfg: dict, s: requests.Session) -> Iterator[Job]:
@@ -75,6 +90,7 @@ def remoteok(cfg: dict, s: requests.Session) -> Iterator[Job]:
             location=j.get("location", ""),
             salary=_salary(j.get("salary_min"), j.get("salary_max"), "USD"),
             tags=j.get("tags") or [],
+            description=_text(j.get("description", ""), keep_newlines=True),
             posted_at=_dt(j.get("date")),
         )
 
@@ -93,6 +109,7 @@ def weworkremotely(cfg: dict, s: requests.Session) -> Iterator[Job]:
                 company=company if role else "",
                 url=link,
                 location=item.findtext("region", ""),
+                description=_text(item.findtext("description", ""), keep_newlines=True),
                 posted_at=_dt(item.findtext("pubDate")),
             )
 
@@ -109,6 +126,7 @@ def remotive(cfg: dict, s: requests.Session) -> Iterator[Job]:
                 location=j.get("candidate_required_location", ""),
                 salary=j.get("salary", ""),
                 tags=j.get("tags") or [],
+                description=_text(j.get("description", ""), keep_newlines=True),
                 posted_at=_dt(j.get("publication_date")),
             )
 
@@ -125,8 +143,17 @@ def jobicy(cfg: dict, s: requests.Session) -> Iterator[Job]:
                 location=j.get("jobGeo", ""),
                 salary=_salary(j.get("salaryMin"), j.get("salaryMax"), j.get("salaryCurrency", "")),
                 tags=j.get("jobIndustry") or [],
+                description=_text(j.get("jobDescription", ""), keep_newlines=True),
                 posted_at=_dt(j.get("pubDate")),
             )
+
+
+def _first_text(payload: dict, *keys: str, keep_newlines: bool = True) -> str:
+    """First present, non-empty key after stripping HTML — tolerate API drift."""
+    for k in keys:
+        if payload.get(k):
+            return _text(payload[k], keep_newlines=keep_newlines)
+    return ""
 
 
 def himalayas(cfg: dict, s: requests.Session) -> Iterator[Job]:
@@ -142,6 +169,7 @@ def himalayas(cfg: dict, s: requests.Session) -> Iterator[Job]:
                 location=", ".join(places) or "Worldwide",
                 salary=_salary(j.get("minSalary"), j.get("maxSalary"), j.get("currency", "")),
                 tags=j.get("categories") or [],
+                description=_first_text(j, "description", "descriptionHtml", "text"),
                 posted_at=_dt(j.get("pubDate")),
             )
 
@@ -157,6 +185,7 @@ def arbeitnow(cfg: dict, s: requests.Session) -> Iterator[Job]:
                 url=j["url"],
                 location=j.get("location", ""),
                 tags=j.get("tags") or [],
+                description=_text(j.get("description", ""), keep_newlines=True),
                 posted_at=_dt(j.get("created_at")),
             )
 
@@ -190,6 +219,7 @@ def adzuna(cfg: dict, s: requests.Session) -> Iterator[Job]:
                     url=j["redirect_url"],
                     location=(j.get("location") or {}).get("display_name", ""),
                     salary=_salary(j.get("salary_min"), j.get("salary_max"), _CURRENCY.get(country, "")),
+                    description=_text(j.get("description", ""), keep_newlines=True),
                     posted_at=_dt(j.get("created")),
                 )
 
@@ -231,6 +261,7 @@ def lever(cfg: dict, s: requests.Session) -> Iterator[Job]:
                 url=j["hostedUrl"],
                 location=cats.get("location", ""),
                 tags=[t for t in (cats.get("team"), cats.get("department")) if t],
+                description=_first_text(j, "description", "descriptionPlain"),
                 posted_at=_dt(j.get("createdAt")),
             )
 
@@ -247,6 +278,7 @@ def ashby(cfg: dict, s: requests.Session) -> Iterator[Job]:
                 company=slug,
                 url=j["jobUrl"],
                 location=j.get("location", ""),
+                description=_first_text(j, "descriptionHtml", "description", "descriptionPlain"),
                 posted_at=_dt(j.get("publishedAt")),
             )
 
@@ -294,6 +326,7 @@ def jooble(cfg: dict, s: requests.Session) -> Iterator[Job]:
                 location=j.get("location", ""),
                 salary=j.get("salary", ""),
                 tags=[q],
+                description=_text(j.get("snippet", ""), keep_newlines=True),
                 posted_at=_dt(j.get("updated")),
             )
 
@@ -301,6 +334,16 @@ def jooble(cfg: dict, s: requests.Session) -> Iterator[Job]:
 _ROLE = re.compile(
     r"\b(devops|devsecops|sre|site reliability|kubernetes|k8s|cloud engineer|platform engineer"
     r"|infrastructure engineer|release engineer|sysadmin|terraform|deployment engineer)\b", re.IGNORECASE)
+
+_LOCATION_LINE = re.compile(
+    r"(?im)^\s*(?:job\s+|work\s+)?location\s*[:\-]\s*(?P<loc>.+?)\s*$"
+)
+
+
+def _channel_location(text: str) -> str:
+    """Pull "Location: Hyderabad" out of a recruiter post."""
+    match = _LOCATION_LINE.search(text or "")
+    return match.group("loc").strip()[:80] if match else ""
 
 
 def tgchannels(cfg: dict, s: requests.Session) -> Iterator[Job]:
@@ -314,8 +357,8 @@ def tgchannels(cfg: dict, s: requests.Session) -> Iterator[Job]:
         for post, dt, body in re.findall(
                 r'data-post="([^"]+)".*?datetime="([^"]+)".*?class="tgme_widget_message_text[^"]*"[^>]*>(.*?)</div>',
                 r.text, re.S):
-            lines = [ln.strip(" 🚀⚠️📢📌-") for ln in _text(body).split(">") if ln.strip()]
-            lines = [ln for ln in re.split(r"[•\n\r]", re.sub(r"\s+", " ", _text(body))) if ln.strip()]
+            body_text = _text(body, keep_newlines=True)
+            lines = [ln.strip(" 🚀⚠️📢📌-") for ln in re.split(r"[•\n\r]", body_text) if ln.strip()]
             candidates = [ln for ln in lines if _ROLE.search(ln)]
             title = (candidates[0] if candidates else (lines[0] if lines else ""))[:90]
             yield Job(
@@ -324,8 +367,9 @@ def tgchannels(cfg: dict, s: requests.Session) -> Iterator[Job]:
                 title=title,
                 company=channel,
                 url=f"https://t.me/{post}",
-                location="",
+                location=_channel_location(body_text),
                 tags=[channel],
+                description=body_text,
                 posted_at=_dt(dt),
             )
 
